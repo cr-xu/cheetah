@@ -36,7 +36,7 @@ jobs:
           create-args: >-
             python=${{ matrix.python-version }}
             pip
-            gsl
+            soliday::sdds
           cache-environment: true
 
       - name: Install pip dependencies
