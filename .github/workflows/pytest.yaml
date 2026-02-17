@@ -2,7 +2,7 @@ name: pytest
 
 on:
   push:
-    branches: [master]
+    # branches: [master]
   pull_request:
     branches: [master]
 
@@ -28,10 +28,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Set up micromamba
+        uses: mamba-org/setup-micromamba@v2
         with:
-          python-version: ${{ matrix.python-version }}
+          environment-name: test
+          # Keep this minimal + reproducible:
+          create-args: >-
+            python=${{ matrix.python-version }}
+            pip
+            gsl
+            vs2015_runtime
+          cache-environment: true
 
       - name: Install pip dependencies
         run: |
