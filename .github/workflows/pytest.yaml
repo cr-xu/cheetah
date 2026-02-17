@@ -37,7 +37,6 @@ jobs:
             python=${{ matrix.python-version }}
             pip
             gsl
-            vs2015_runtime
           cache-environment: true
 
       - name: Install pip dependencies
